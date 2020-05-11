@@ -1,27 +1,25 @@
 <template>
     <div id="two">
+        <navigationBar></navigationBar>
         <h2>第二页面</h2>
-        <div @click="back" class="button">返回</div>
-        <p class="text">{{id}}</p>
     </div>
 </template>
 
 <script>
+    import navigationBar from '../components/navigationBar'
+
     export default {
         name: "two",
+        components: {navigationBar},
         data() {
             return {
                 id: ''
             }
         },
         created: function () {
-            this.id = this.$route.query.id
+
         },
-        methods: {
-            back() {
-                this.$router.go(-1)
-            }
-        }
+        methods: {}
     }
 </script>
 
