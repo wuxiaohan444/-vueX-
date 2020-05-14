@@ -1,6 +1,6 @@
 <template>
     <div id="index" @scroll="onScroll" ref="index" style="overflow-x:hidden">
-        <navigationBar></navigationBar>
+        <!--<navigationBar></navigationBar>-->
         <!--轮播图-->
         <div class="swiper-container">
             <!--上一个图片按钮-->
@@ -15,6 +15,8 @@
             <!-- 分页器 -->
             <div class="swiper-pagination"></div>
         </div>
+
+        <button type="button" @click="addNum">点击</button>
     </div>
 </template>
 
@@ -33,8 +35,13 @@
                 ]
             }
         },
+        created(){
+            console.log(this.$store.state.changableNum);
+            console.log(this.$store.state.chooseStatus);
+        },
         mounted() {
-            this.initSwiper()
+            this.initSwiper();
+
         },
         methods: {
             initSwiper() {
@@ -63,6 +70,12 @@
                 if (c > 600) {
                     console.log(c);
                 }
+            },
+            addNum(){
+                this.$store.dispatch('getNewNum',6);
+                this.$store.dispatch('getNewChoose',false);
+                console.log(this.$store.state.changableNum);
+                console.log(this.$store.state.chooseStatus);
             }
         }
     }
@@ -83,6 +96,11 @@
                 height: 500px;
             }
 
+        }
+        button{
+            outline: none;
+            border: none;
+            width: 50px;
         }
     }
 </style>

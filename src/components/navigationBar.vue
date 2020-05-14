@@ -1,7 +1,7 @@
 <template>
-    <div id="navigation">
-        <div v-for="(item,index) in navigateArr" :key="index">
-            <router-link :to="item.path" :class="indexNum===index?'active':''">{{item.text}}</router-link>
+    <div id="pc-navigation">
+        <div v-for="(item,index) in navigateArr" :key="index" class="pc-item">
+            <router-link :to="item.path" :class="indexNum===index?'pc-active':''">{{item.text}}</router-link>
         </div>
     </div>
 </template>
@@ -11,13 +11,13 @@
         name: "navigationBar",
         data() {
             return {
-                navigateArr: [{path: '/', text: '首页'}, {path: '/one', text: '第一'}, {path: '/two', text: '第二'}],
+                navigateArr: [{path: '/index', text: '首页'}, {path: '/one', text: '第一'}, {path: '/two', text: '第二'}],
                 indexNum: .0
             }
         },
         created() {
             let path = this.$route.path;
-            if (path === '/') {
+            if (path === '/index') {
                 this.indexNum = 0;
             } else if (path === '/one') {
                 this.indexNum = 1;
@@ -29,11 +29,11 @@
 </script>
 
 <style scoped lang="less">
-    #navigation {
+    #pc-navigation {
         display: flex;
         height: 100px;
         align-items: center;
-        > div {
+        > pc-item {
             flex: 1;
             height: 50px;
             line-height: 50px;
@@ -42,11 +42,11 @@
             a{
                 flex: 1;
             }
-            .active {
+            .pc-active {
                 color: aqua;
                 position: relative;
             }
-            .active:after{
+            .pc-active:after{
                 position: absolute;
                 content: '';
                 display: block;

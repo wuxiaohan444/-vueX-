@@ -7,7 +7,21 @@
 <script>
     export default {
         name: 'App',
-        methods: {}
+        mounted() {
+            // if (this._isMobile()) {
+            //     // 手机端
+            //     this.$router.replace('/one');
+            // } else {
+            //     //pc端
+            //     this.$router.replace('/index');
+            // }
+        },
+        methods: {
+            _isMobile() {
+                let flag = navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)
+                return flag;
+            }
+        }
     }
 </script>
 
